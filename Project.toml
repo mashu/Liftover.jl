@@ -1,0 +1,19 @@
+name = "Liftover"
+uuid = "ce63d686-48cc-4a4c-8277-5d5920e76064"
+version = "0.1.0"
+authors = ["Mateusz Kaduk <mateusz.kaduk@gmail.com>"]
+
+[deps]
+CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+
+[compat]
+CodecZlib = "0.7"
+Downloads = "1"
+julia = "1.9"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
