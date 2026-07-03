@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Examples · Liftover.jl</title><meta name="title" content="Examples · Liftover.jl"/><meta property="og:title" content="Examples · Liftover.jl"/><meta property="twitter:title" content="Examples · Liftover.jl"/><meta name="description" content="Documentation for Liftover.jl."/><meta property="og:description" content="Documentation for Liftover.jl."/><meta property="twitter:description" content="Documentation for Liftover.jl."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">Liftover.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../getting_started/">Getting started</a></li><li><a class="tocitem" href="../coordinates/">Coordinates</a></li><li class="is-active"><a class="tocitem" href>Examples</a><ul class="internal"><li><a class="tocitem" href="#Lift-a-single-variant-position-(hg19-hg38)"><span>Lift a single variant position (hg19 → hg38)</span></a></li><li><a class="tocitem" href="#Batch-lift-a-table-of-SNP-positions"><span>Batch-lift a table of SNP positions</span></a></li><li><a class="tocitem" href="#Lift-coordinates-from-a-local-chain-file"><span>Lift coordinates from a local chain file</span></a></li><li><a class="tocitem" href="#Round-trip-check-(hg38-hg19-hg38)"><span>Round-trip check (hg38 → hg19 → hg38)</span></a></li><li><a class="tocitem" href="#Use-a-UCSC-mirror"><span>Use a UCSC mirror</span></a></li><li><a class="tocitem" href="#0-based-BED-style-coordinates"><span>0-based BED-style coordinates</span></a></li><li><a class="tocitem" href="#Inspect-available-contigs"><span>Inspect available contigs</span></a></li></ul></li><li><a class="tocitem" href="../api/">API</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Examples</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Examples</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/mashu/Liftover.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/mashu/Liftover.jl/blob/main/docs/src/examples.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Examples"><a class="docs-heading-anchor" href="#Examples">Examples</a><a id="Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Examples" title="Permalink"></a></h1><p>These examples show typical workflows with genomic coordinates. They use <code>one_based=true</code> because VCF and most tabular variant data are 1-based.</p><h2 id="Lift-a-single-variant-position-(hg19-hg38)"><a class="docs-heading-anchor" href="#Lift-a-single-variant-position-(hg19-hg38)">Lift a single variant position (hg19 → hg38)</a><a id="Lift-a-single-variant-position-(hg19-hg38)-1"></a><a class="docs-heading-anchor-permalink" href="#Lift-a-single-variant-position-(hg19-hg38)" title="Permalink"></a></h2><pre><code class="language-julia hljs">using Liftover
+
+hg19_to_hg38 = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;; one_based=true)
+
+chrom = &quot;1&quot;
+pos = 103786442   # 1-based position on hg19
+
+matches = hg19_to_hg38[chrom][pos]
+
+if isempty(matches)
+    println(&quot;Position does not lift over&quot;)
+else
+    for m in matches
+        println(&quot;hg38: &quot;, m.contig, &quot;:&quot;, m.pos, &quot; (strand &quot;, m.strand, &quot;)&quot;)
+    end
+end</code></pre><h2 id="Batch-lift-a-table-of-SNP-positions"><a class="docs-heading-anchor" href="#Batch-lift-a-table-of-SNP-positions">Batch-lift a table of SNP positions</a><a id="Batch-lift-a-table-of-SNP-positions-1"></a><a class="docs-heading-anchor-permalink" href="#Batch-lift-a-table-of-SNP-positions" title="Permalink"></a></h2><pre><code class="language-julia hljs">using Liftover
+
+converter = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;; one_based=true)
+
+snps = [
+    (&quot;1&quot;, 103786442),
+    (&quot;2&quot;, 234567890),
+    (&quot;X&quot;, 154331033),
+]
+
+for (chrom, pos) in snps
+    matches = converter[chrom][pos]
+    if isempty(matches)
+        println(chrom, &quot;:&quot;, pos, &quot; -&gt; (no liftover)&quot;)
+    else
+        m = matches[1]   # take first hit when unambiguous
+        println(chrom, &quot;:&quot;, pos, &quot; -&gt; &quot;, m.contig, &quot;:&quot;, m.pos)
+    end
+end</code></pre><p>When a position has multiple mappings, inspect the full vector or apply your own disambiguation rule (e.g. keep the match on the same contig).</p><h2 id="Lift-coordinates-from-a-local-chain-file"><a class="docs-heading-anchor" href="#Lift-coordinates-from-a-local-chain-file">Lift coordinates from a local chain file</a><a id="Lift-coordinates-from-a-local-chain-file-1"></a><a class="docs-heading-anchor-permalink" href="#Lift-coordinates-from-a-local-chain-file" title="Permalink"></a></h2><p>Useful when working offline or with custom chain files:</p><pre><code class="language-julia hljs">using Liftover
+
+chain_path = &quot;/data/liftover/mm10ToMm39.over.chain.gz&quot;
+converter = ChainFile(chain_path; one_based=true)
+
+# mouse chromosome 1, 1-based
+matches = converter[&quot;chr1&quot;][12345678]</code></pre><h2 id="Round-trip-check-(hg38-hg19-hg38)"><a class="docs-heading-anchor" href="#Round-trip-check-(hg38-hg19-hg38)">Round-trip check (hg38 → hg19 → hg38)</a><a id="Round-trip-check-(hg38-hg19-hg38)-1"></a><a class="docs-heading-anchor-permalink" href="#Round-trip-check-(hg38-hg19-hg38)" title="Permalink"></a></h2><p>Verify that a position maps consistently through a round trip:</p><pre><code class="language-julia hljs">using Liftover
+
+to_hg38 = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;; one_based=true)
+to_hg19 = get_lifter(&quot;hg38&quot;, &quot;hg19&quot;; one_based=true)
+
+chrom, pos = &quot;1&quot;, 103786442
+
+fwd = to_hg38[chrom][pos]
+@assert !isempty(fwd)
+m = fwd[1]
+
+back = to_hg19[m.contig][m.pos]
+@assert !isempty(back)
+b = back[1]
+
+println(&quot;Original:  chr&quot;, chrom, &quot;:&quot;, pos)
+println(&quot;Via hg38:  &quot;, m.contig, &quot;:&quot;, m.pos)
+println(&quot;Back:      &quot;, b.contig, &quot;:&quot;, b.pos)</code></pre><h2 id="Use-a-UCSC-mirror"><a class="docs-heading-anchor" href="#Use-a-UCSC-mirror">Use a UCSC mirror</a><a id="Use-a-UCSC-mirror-1"></a><a class="docs-heading-anchor-permalink" href="#Use-a-UCSC-mirror" title="Permalink"></a></h2><p>If the default UCSC download host is slow or blocked, point at a mirror that mirrors the same directory layout:</p><pre><code class="language-julia hljs">using Liftover
+
+converter = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;;
+    chain_server = &quot;https://hgdownload.soe.ucsc.edu&quot;,
+    cache = joinpath(homedir(), &quot;.liftover&quot;),
+)</code></pre><h2 id="0-based-BED-style-coordinates"><a class="docs-heading-anchor" href="#0-based-BED-style-coordinates">0-based BED-style coordinates</a><a id="0-based-BED-style-coordinates-1"></a><a class="docs-heading-anchor-permalink" href="#0-based-BED-style-coordinates" title="Permalink"></a></h2><p>For BED files (0-based start, half-open end), use the default coordinate system:</p><pre><code class="language-julia hljs">using Liftover
+
+converter = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;)   # one_based=false by default
+
+# BED record: chr1  1000  2000  (covers bases at indices 1000..1999)
+bed_start = 1000
+bed_end_exclusive = 2000
+
+start_lift = converter[&quot;chr1&quot;][bed_start]
+end_lift = converter[&quot;chr1&quot;][bed_end_exclusive - 1]   # last included base
+
+for (label, matches) in [(&quot;start&quot;, start_lift), (&quot;end&quot;, end_lift)]
+    if isempty(matches)
+        println(label, &quot;: no liftover&quot;)
+    else
+        m = matches[1]
+        println(label, &quot;: &quot;, m.contig, &quot;:&quot;, m.pos)
+    end
+end</code></pre><p>Lift start and end independently; do not assume the lifted interval length is preserved across assemblies.</p><h2 id="Inspect-available-contigs"><a class="docs-heading-anchor" href="#Inspect-available-contigs">Inspect available contigs</a><a id="Inspect-available-contigs-1"></a><a class="docs-heading-anchor-permalink" href="#Inspect-available-contigs" title="Permalink"></a></h2><pre><code class="language-julia hljs">using Liftover
+
+converter = get_lifter(&quot;hg19&quot;, &quot;hg38&quot;)
+
+for contig in sort(collect(keys(converter)))
+    println(contig)
+end</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../coordinates/">« Coordinates</a><a class="docs-footer-nextpage" href="../api/">API »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Friday 3 July 2026 12:15">Friday 3 July 2026</span>. Using Julia version 1.12.6.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
