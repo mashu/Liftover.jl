@@ -1,0 +1,10 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Liftover = "ce63d686-48cc-4a4c-8277-5d5920e76064"
+
+[sources]
+Liftover = {path = ".."}
+
+[compat]
+Documenter = "1"
+julia = "1.9"

@@ -18,6 +18,12 @@ Supertype for coordinate lifters. A concrete lifter must implement
 """
 abstract type AbstractLifter end
 
+"""
+    convert_coordinate(lifter, contig, pos) -> Vector{Match}
+
+Lift `pos` on `contig` from the target genome to the query genome. Alias for
+[`query`](@ref); provided for compatibility with pyliftover.
+"""
 convert_coordinate(lifter::AbstractLifter, contig::AbstractString, pos::Integer) =
     query(lifter, contig, pos)
 

@@ -3,9 +3,11 @@
 
 Convert point coordinates between genome assemblies using UCSC chain files.
 
-A Julia port of [jeremymcrae/liftover](https://github.com/jeremymcrae/liftover)
-(which is itself inspired by pyliftover). Chain files are parsed into one
-centered interval tree per target contig for fast strand-aware point queries.
+Motivated by [jeremymcrae/liftover](https://github.com/jeremymcrae/liftover)
+(which traces back to pyliftover). A Julia rewrite — same liftover semantics
+and a similar API, written from scratch with Julia-specific design. Chain files
+are parsed into one centered interval tree per target contig for fast
+strand-aware point queries.
 
 ```julia
 using Liftover
@@ -25,7 +27,7 @@ module Liftover
 using CodecZlib: GzipDecompressorStream
 using Downloads: Downloads
 
-export get_lifter, LiftOver, ChainFile, Target, Match
+export get_lifter, LiftOver, ChainFile, Target, Match, AbstractLifter
 export query, convert_coordinate
 
 include("intervals.jl")
